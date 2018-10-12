@@ -7,6 +7,7 @@ import datetime
 import numpy as np
 import pandas as pd
 import sklearn as sk
+from sklearn import preprocessing
 import matplotlib.pyplot as plt
 
 # -------------------------------------------------- Package setup -----------------------------------------------------
@@ -17,6 +18,7 @@ pd.set_option('display.width', 1000)
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 data_dict = {'IMU': {}, 'MoCap': {}}
+file_names = []
 
 for FILE_NAME in os.listdir(DIR_PATH[:-5] + '\\DATA\\RAW\\Measure_01'):
     print(FILE_NAME)
@@ -26,6 +28,7 @@ for FILE_NAME in os.listdir(DIR_PATH[:-5] + '\\DATA\\RAW\\Measure_01'):
                                decimal=',',
                                names=['time', 'acc0', 'acc1', 'acc2', 'gyro0', 'gyro1', 'gyro2', 'mag0', 'mag1', 'mag2'])
         data_dict['IMU'][FILE_NAME[:-8]] = imu_data
+        file_names.append(FILE_NAME[:-8])
         print(imu_data.head())
         f, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1)
         imu_data.plot(x='time', y='mag0', ax=ax1)
@@ -43,3 +46,11 @@ for FILE_NAME in os.listdir(DIR_PATH[:-5] + '\\DATA\\RAW\\Measure_01'):
         plt.show()
 
 print(data_dict)
+
+for name in file_names:
+    scaler = preprocessing.StandardScaler().fit(data_dict['IMU'][name])
+    data_dict['IMU'][name] = scaler.transform(data_dict['IMU'][name])
+    print(data_dict['IMU'][name])
+    scaler = preprocessing.StandardScaler().fit(data_dict['MoCap'][name])
+    data_dict['MoCap'][name] = scaler.transform(data_dict['MoCap'][name])
+    print(data_dict['MoCap'][name])
