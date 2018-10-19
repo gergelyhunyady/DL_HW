@@ -1,0 +1,38 @@
+Linear Speed: 200
+Rotation Speed: 60
+ms to wait: 9 ms
+synronoused
+complex route:
+- standstil
+- rotation in starting point
+- wondering around
+
+IMU:
+time
+acc0
+acc1
+acc2
+gyro0
+gyro1
+gyro2
+mag0
+mag1
+mag2
+
+MoCap
+time
+x
+y
+z
+tracked
+orientation
+Qx
+Qy
+Qz
+Qw
+
+Robot:
+time
+mot0
+mot1
+mot2
