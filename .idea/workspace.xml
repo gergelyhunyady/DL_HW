@@ -71,6 +71,9 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/manu_python_hw/Project2" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
