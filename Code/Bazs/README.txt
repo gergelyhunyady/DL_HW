@@ -9,7 +9,7 @@ First Step:
 
 Make useable data frame to feed into neural networks
 This file feeds from the measurement folder. Details and working description in the file as comments
-The output of the file saved as PreprocessedData.txt
+The output of the file saved as PreprocessedData_vX.txt
 This file can be used to generate more dataframe files.
 
 ---------
